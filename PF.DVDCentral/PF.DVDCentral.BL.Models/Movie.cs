@@ -13,6 +13,12 @@ namespace PF.DVDCentral.BL.Models
         public string Description { get; set; }
 
         public decimal Cost { get; set; }
-        
+
+        public int RatingsID { get; set; }
+
+        public int FormatID { get; set; }
+
+        public int DirectorID { get; set; }
+
     }
 }

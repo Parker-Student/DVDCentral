@@ -41,6 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RatingManager.cs" />
+    <Compile Include="DirectorManager.cs" />
+    <Compile Include="OrderItemManager.cs" />
+    <Compile Include="OrderManager.cs" />
+    <Compile Include="MovieGenreManager.cs" />
+    <Compile Include="FormatManager.cs" />
+    <Compile Include="GenreManager.cs" />
+    <Compile Include="CustomerManager.cs" />
+    <Compile Include="MovieManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
