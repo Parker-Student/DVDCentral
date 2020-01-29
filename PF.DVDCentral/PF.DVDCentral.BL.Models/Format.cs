@@ -9,6 +9,7 @@ namespace PF.DVDCentral.BL.Models
    public class Format
     {
         public int ID { get; set; }
+        public string Description { get; set; }
 
     }
 }
