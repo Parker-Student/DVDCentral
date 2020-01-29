@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PF.DVDCentral.BL.Models
 {
-    public class Program
+    public class Customer
     {
+        public int ID { get; set; }
+
     }
 }

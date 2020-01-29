@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PF.DVDCentral.BL
+namespace PF.DVDCentral.BL.Models
 {
-    public class Class1
+    public class Order
     {
+        public int ID { get; set; }
+
     }
 }
