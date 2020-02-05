@@ -1,60 +1,60 @@
 ﻿# = Foreign Key
 * = Primary Key
 
-Genre:
-ID*
-Description
-
-Movie Genre:
-ID*
-MovieID#
-GenreID#
-
-Movie:
-ID*
-Title
-Description
-ImagePath
-Cost
-RatingsID#
-FormatID#
-DirectorID#
-
-Format:
-ID*
-Description
-
-Director:
-ID*
-FirstName
-LastName
-
-Rating:
-ID*
-Description
-
 Customer:
-ID*
-FirstName
-LastName
+ID* (int)
+FirstName (varchar(50))
+LastName (varchar(50))
 Address
-City
+City (varchar(50))
 State
-ZIP
-Phone
-UserName
+ZIP (int)
+Phone  (varchar(50))
+UserName (varchar(50))
 Password
 
+Director:
+ID* (int)
+FirstName (varchar(50))
+LastName (varchar(50))
+
+Format:
+ID* (int)
+Description (varchar(50))
+
+Genre:
+ID* (int)
+Description (varchar(50))
+
+Movie:
+ID* (int)
+Title
+Description (varchar(50))
+ImagePath
+Cost (decimal(18,2))
+RatingsID# (int)
+FormatID# (int)
+DirectorID# (int)
+
+Movie Genre:
+ID* (int)
+MovieID# (int)
+GenreID# (int)
+
 Order:
-ID*
-CustomerID#
+ID* (int)
+CustomerID# (int)
 OrderDate
-UserID
+UserID (int)
 PaymentReceipt
 ShipDate
 
 OrderItem:
-ID*
-OrderID#
-MovieID#
-Quantity
+ID* (int)
+OrderID# (int)
+MovieID# (int)
+Quantity (int)
+
+Rating:
+ID* (int)
+Description (varchar(50))
