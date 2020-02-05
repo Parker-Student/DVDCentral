@@ -15,5 +15,6 @@ namespace PF.DVDCentral.PL
     public partial class tblFormat
     {
         public int Id { get; set; }
+        public string Description { get; set; }
     }
 }
