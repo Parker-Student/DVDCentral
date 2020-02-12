@@ -8,11 +8,11 @@ namespace PF.DVDCentral.BL.Models
 {
     public class MovieGenre
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
 
-        public int GenreID { get; set; }
+        public int GenreId { get; set; }
 
     }
 }

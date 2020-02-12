@@ -57,6 +57,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="utDirector.cs" />
+    <Compile Include="utRating.cs" />
+    <Compile Include="utFormat.cs" />
     <Compile Include="utGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,8 +10,7 @@ City (varchar(50))
 State
 ZIP (int)
 Phone  (varchar(50))
-UserName (varchar(50))
-Password
+UserId (varchar(50))
 
 Director:
 ID* (int)
@@ -32,6 +31,7 @@ Title
 Description (varchar(50))
 ImagePath
 Cost (decimal(18,2))
+InStockQty
 RatingsID# (int)
 FormatID# (int)
 DirectorID# (int)
@@ -44,10 +44,9 @@ GenreID# (int)
 Order:
 ID* (int)
 CustomerID# (int)
-OrderDate
+OrderDate (datetime)
 UserID (int)
 PaymentReceipt
-ShipDate
 
 OrderItem:
 ID* (int)
@@ -58,3 +57,10 @@ Quantity (int)
 Rating:
 ID* (int)
 Description (varchar(50))
+
+User:
+Id(int)
+UserId(int)
+FirstName
+LastName
+Password

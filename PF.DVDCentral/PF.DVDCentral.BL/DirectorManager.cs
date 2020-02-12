@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
             return new List<Director>();
         }
 
-        public static Director LoadByID()
+        public static Director LoadById()
         {
             return new Director();
         }

@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
             return new List<Customer>();
         }
 
-        public static Customer LoadByID()
+        public static Customer LoadById()
         {
             return new Customer();
         }

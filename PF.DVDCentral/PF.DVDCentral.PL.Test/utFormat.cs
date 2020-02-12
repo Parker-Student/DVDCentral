@@ -6,16 +6,16 @@ using System.Linq;
 namespace PF.DVDCentral.PL.Test
 {
     [TestClass]
-    public class utGenre
+    public class utFormat
     {
         [TestMethod]
         public void LoadTest()
         {
             DVDCentralEntities dc = new DVDCentralEntities();
 
-            //SELECT * FROM tblGenre - LINQ SQL
-            var results = from genre in dc.tblGenres
-                          select genre;
+            //SELECT * FROM tblFormat - LINQ SQL
+            var results = from format in dc.tblFormats
+                          select format;
 
             int expected = 12;
             int actual = results.Count();
@@ -27,15 +27,15 @@ namespace PF.DVDCentral.PL.Test
         {
             using(DVDCentralEntities dc = new DVDCentralEntities())
             {
-                //Make new Genre
-                tblGenre newrow = new tblGenre();
+                //Make new Format
+                tblFormat newrow = new tblFormat();
 
                 //Set the column values
                 newrow.Id = -99;
                 newrow.Description = "Test";
 
                 //Add the Row
-                dc.tblGenres.Add(newrow);
+                dc.tblFormats.Add(newrow);
 
                 //Save the Changes
                 int results = dc.SaveChanges();
@@ -50,7 +50,7 @@ namespace PF.DVDCentral.PL.Test
             {
                 //Get the Record that I want to update
                 //Select * FROM tblrow WHERE Id = -99;
-                tblGenre row = (from dt in dc.tblGenres
+                tblFormat row = (from dt in dc.tblFormats
                                 where dt.Id == -99
                                 select dt).FirstOrDefault();
                 if(row != null)
@@ -71,12 +71,12 @@ namespace PF.DVDCentral.PL.Test
         {
             using (DVDCentralEntities dc = new DVDCentralEntities())
             {
-                tblGenre row = (from dt in dc.tblGenres
+                tblFormat row = (from dt in dc.tblFormats
                                 where dt.Id == -99
                                 select dt).FirstOrDefault();
                 if (row != null)
                 {
-                    dc.tblGenres.Remove(row);
+                    dc.tblFormats.Remove(row);
                     int actual = dc.SaveChanges();
 
                     Assert.AreNotEqual(0, actual);

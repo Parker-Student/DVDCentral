@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace PF.DVDCentral.BL.Models
 {
-    public class Order
+    public class User
     {
         public int Id { get; set; }
-
-        public int CustomerId { get; set; }
-
-        public DateTime OrderDate { get; set; }
-
         public int UserId { get; set; }
-
-        public string PaymentReceipt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
 
 
     }

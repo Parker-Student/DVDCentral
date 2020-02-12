@@ -6,16 +6,16 @@ using System.Linq;
 namespace PF.DVDCentral.PL.Test
 {
     [TestClass]
-    public class utGenre
+    public class utDirector
     {
         [TestMethod]
         public void LoadTest()
         {
             DVDCentralEntities dc = new DVDCentralEntities();
 
-            //SELECT * FROM tblGenre - LINQ SQL
-            var results = from genre in dc.tblGenres
-                          select genre;
+            //SELECT * FROM tblDirector - LINQ SQL
+            var results = from director in dc.tblDirectors
+                          select director;
 
             int expected = 12;
             int actual = results.Count();
@@ -27,15 +27,16 @@ namespace PF.DVDCentral.PL.Test
         {
             using(DVDCentralEntities dc = new DVDCentralEntities())
             {
-                //Make new Genre
-                tblGenre newrow = new tblGenre();
+                //Make new Director
+                tblDirector newrow = new tblDirector();
 
                 //Set the column values
                 newrow.Id = -99;
-                newrow.Description = "Test";
+                newrow.FirstName = "Test";
+                newrow.LastName = "Test";
 
                 //Add the Row
-                dc.tblGenres.Add(newrow);
+                dc.tblDirectors.Add(newrow);
 
                 //Save the Changes
                 int results = dc.SaveChanges();
@@ -50,13 +51,13 @@ namespace PF.DVDCentral.PL.Test
             {
                 //Get the Record that I want to update
                 //Select * FROM tblrow WHERE Id = -99;
-                tblGenre row = (from dt in dc.tblGenres
+                tblDirector row = (from dt in dc.tblDirectors
                                 where dt.Id == -99
                                 select dt).FirstOrDefault();
                 if(row != null)
                 {
                     //change values
-                    row.Description = "New Description";
+                    row.FirstName = "New FirstName";
 
                     int actual = dc.SaveChanges();
 
@@ -71,12 +72,12 @@ namespace PF.DVDCentral.PL.Test
         {
             using (DVDCentralEntities dc = new DVDCentralEntities())
             {
-                tblGenre row = (from dt in dc.tblGenres
+                tblDirector row = (from dt in dc.tblDirectors
                                 where dt.Id == -99
                                 select dt).FirstOrDefault();
                 if (row != null)
                 {
-                    dc.tblGenres.Remove(row);
+                    dc.tblDirectors.Remove(row);
                     int actual = dc.SaveChanges();
 
                     Assert.AreNotEqual(0, actual);

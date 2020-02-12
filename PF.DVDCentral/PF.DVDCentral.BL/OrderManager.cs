@@ -16,7 +16,7 @@ namespace PF.DVDCentral.BL
 
         public static int Insert(Order order)
         {
-            return Insert(order.CustomerID,order.OrderDate,order.ShipDate,order.UserID);
+            return Insert(order.CustomerId,order.OrderDate,order.UserId);
 
         }
 
@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
 
         public static int Update(Order order)
         {
-            return Update(Order.ID, Order.Description);
+            return Update(Order.Id, Order.Description);
         }
 
         public static int Delete(int id)
@@ -41,7 +41,7 @@ namespace PF.DVDCentral.BL
             return new List<Order>();
         }
 
-        public static Order LoadByID()
+        public static Order LoadById()
         {
             return new Order();
         }

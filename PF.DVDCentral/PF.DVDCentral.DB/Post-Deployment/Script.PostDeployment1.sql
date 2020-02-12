@@ -10,3 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 :r .\DefaultData\Genre.sql
+:r .\DefaultData\Format.sql
+:r .\DefaultData\Director.sql
+:r .\DefaultData\Rating.sql

@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
 
         public static int Update (Rating rating)
         {
-            return Update(rating.ID, rating.Description);
+            return Update(rating.Id, rating.Description);
         }
 
         public static int Delete(int id)
@@ -41,7 +41,7 @@ namespace PF.DVDCentral.BL
             return new List<Rating>();
         }
 
-        public static Rating LoadByID()
+        public static Rating LoadById()
         {
             return new Rating();
         }

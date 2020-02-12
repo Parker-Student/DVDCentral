@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
             return new List<Genre>();
         }
 
-        public static Genre LoadByID()
+        public static Genre LoadById()
         {
             return new Genre();
         }

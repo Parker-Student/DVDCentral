@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
             return new List<Format>();
         }
 
-        public static Format LoadByID()
+        public static Format LoadById()
         {
             return new Format();
         }

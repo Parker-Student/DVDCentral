@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL
             return new List<OrderItem>();
         }
 
-        public static OrderItem LoadByID()
+        public static OrderItem LoadById()
         {
             return new OrderItem();
         }

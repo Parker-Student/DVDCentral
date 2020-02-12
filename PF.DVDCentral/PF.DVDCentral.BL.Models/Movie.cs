@@ -8,17 +8,20 @@ namespace PF.DVDCentral.BL.Models
 {
     public class Movie
     {
-        public int ID { get; set; }
-
+        public int Id { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
 
+        public string ImagePath { get; set; }
+
         public decimal Cost { get; set; }
+        public int InStockQty { get; set; }
 
-        public int RatingsID { get; set; }
+        public int RatingsId { get; set; }
 
-        public int FormatID { get; set; }
+        public int FormatId { get; set; }
 
-        public int DirectorID { get; set; }
+        public int DirectorId { get; set; }
 
     }
 }

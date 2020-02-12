@@ -8,7 +8,8 @@ namespace PF.DVDCentral.BL.Models
 {
     public class Customer
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -16,7 +17,6 @@ namespace PF.DVDCentral.BL.Models
         public string State { get; set; }
         public int Zip { get; set; }
         public string Phone { get; set; }
-        public string UserName { get; set; }
         public string Password { get; set; }
 
     }
