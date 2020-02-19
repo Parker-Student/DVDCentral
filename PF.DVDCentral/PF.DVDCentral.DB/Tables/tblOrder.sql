@@ -4,5 +4,5 @@
     [CustomerId] INT NOT NULL, 
     [OrderDate] DATETIME NOT NULL, 
     [UserId] INT NOT NULL, 
-    [PaymentReceipt] VARCHAR(MAX) NOT NULL 
+    [ShipDate] DATETIME NOT NULL 
 )

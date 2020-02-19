@@ -4,32 +4,145 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PF.DVDCentral.BL.Models;
+using PF.DVDCentral.PL;
 
 namespace PF.DVDCentral.BL
 {
     public class FormatManager
     {
-        public static int Insert()
+        public static int Insert(out int id, string description)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblFormat newrow = new tblFormat();
+
+                    newrow.Description = description;
+                    newrow.Id = dc.tblFormats.Any() ? dc.tblFormats.Max(dt => dt.Id) + 1 : 1;
+                    id = newrow.Id;
+
+                   
+
+                    dc.tblFormats.Add(newrow);
+                    return dc.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        public static int Update()
+
+        public static int Insert(Format format)
         {
-            return 0;
+            try
+            {
+                int id = 0;
+                int result = Insert(out id, format.Description);
+                format.Id = id;
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
-        public static int Delete()
+
+
+        public static int Update(int id, string description)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblFormat updaterow = (from dt in dc.tblFormats
+                                          where dt.Id == id
+                                          select dt).FirstOrDefault();
+
+                    updaterow.Description = description;
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static int Update(Format format)
+        {
+            return Update(format.Id, format.Description);
+        }
+        public static int Delete(int id)
+        {
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblFormat deleterow = (from dt in dc.tblFormats
+                                          where dt.Id == id
+                                          select dt).FirstOrDefault();
+
+                    dc.tblFormats.Remove(deleterow);
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static List<Format> Load()
         {
-            return new List<Format>();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    List<Format> formats = new List<Format>();
+                    foreach (tblFormat dt in dc.tblFormats)
+                    {
+                        formats.Add(new Format
+                        {
+                            Id = dt.Id,
+                            Description = dt.Description
+                        });
+                    }
+                    return formats;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        public static Format LoadById()
+        public static Format LoadById(int id)
         {
-            return new Format();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblFormat row = (from dt in dc.tblFormats
+                                    where dt.Id == id
+                                    select dt).FirstOrDefault();
+
+                    if (row != null)
+                        return new Format { Id = row.Id, Description = row.Description };
+                    else
+                        throw new Exception("Row was not found.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
     }
 }

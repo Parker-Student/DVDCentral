@@ -46,7 +46,7 @@ ID* (int)
 CustomerID# (int)
 OrderDate (datetime)
 UserID (int)
-PaymentReceipt
+ShipDate (datetime)
 
 OrderItem:
 ID* (int)

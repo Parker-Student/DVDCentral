@@ -4,46 +4,143 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PF.DVDCentral.BL.Models;
+using PF.DVDCentral.PL;
 
 namespace PF.DVDCentral.BL
 {
     public class RatingManager
     {
-        public static int Insert(string description)
+        public static int Insert(out int id, string description)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblRating newrow = new tblRating();
+
+                    newrow.Description = description;
+                    newrow.Id = dc.tblRatings.Any() ? dc.tblRatings.Max(dt => dt.Id) + 1 : 1;
+                    id = newrow.Id;
+
+                    dc.tblRatings.Add(newrow);
+                    return dc.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static int Insert(Rating rating)
         {
-            return Insert(rating.Description);
+            try
+            {
+                int id = 0;
+                int result = Insert(out id, rating.Description);
+                rating.Id = id;
+                return result;
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
         }
 
-        public static int Update( int id, string description)
+
+        public static int Update(int id, string description)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblRating updaterow = (from dt in dc.tblRatings
+                                           where dt.Id == id
+                                           select dt).FirstOrDefault();
+
+                    updaterow.Description = description;
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public static int Update (Rating rating)
+        public static int Update(Rating rating)
         {
             return Update(rating.Id, rating.Description);
         }
-
         public static int Delete(int id)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblRating deleterow = (from dt in dc.tblRatings
+                                           where dt.Id == id
+                                           select dt).FirstOrDefault();
+
+                    dc.tblRatings.Remove(deleterow);
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        
         public static List<Rating> Load()
         {
-            return new List<Rating>();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    List<Rating> ratings = new List<Rating>();
+                    foreach (tblRating dt in dc.tblRatings)
+                    {
+                        ratings.Add(new Rating
+                        {
+                            Id = dt.Id,
+                            Description = dt.Description
+                        });
+                    }
+                    return ratings;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        public static Rating LoadById()
+        public static Rating LoadById(int id)
         {
-            return new Rating();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblRating row = (from dt in dc.tblRatings
+                                     where dt.Id == id
+                                     select dt).FirstOrDefault();
+
+                    if (row != null)
+                        return new Rating { Id = row.Id, Description = row.Description };
+                    else
+                        throw new Exception("Row was not found.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
     }
 }
