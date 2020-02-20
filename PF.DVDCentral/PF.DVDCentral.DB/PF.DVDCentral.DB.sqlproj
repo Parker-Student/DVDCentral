@@ -76,6 +76,12 @@
     <None Include="Post-Deployment\DefaultData\Director.sql" />
     <None Include="Post-Deployment\DefaultData\Format.sql" />
     <None Include="Post-Deployment\DefaultData\Rating.sql" />
+    <None Include="Post-Deployment\DefaultData\User.sql" />
+    <None Include="Post-Deployment\DefaultData\Movie.sql" />
+    <None Include="Post-Deployment\DefaultData\OrderItem.sql" />
+    <None Include="Post-Deployment\DefaultData\Order.sql" />
+    <None Include="Post-Deployment\DefaultData\MovieGenre.sql" />
+    <None Include="Post-Deployment\DefaultData\Customer.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PF.DVDCentral.DB.refactorlog" />

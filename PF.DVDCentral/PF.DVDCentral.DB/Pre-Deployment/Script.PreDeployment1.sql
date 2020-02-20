@@ -18,3 +18,5 @@ DROP TABLE IF EXISTS dbo.tblMovieGenre
 DROP TABLE IF EXISTS dbo.tblOrder
 DROP TABLE IF EXISTS dbo.tblOrderItem
 DROP TABLE IF EXISTS dbo.tblRating
+DROP TABLE IF EXISTS dbo.tblUser
+
