@@ -38,7 +38,7 @@ namespace PF.DVDCentral.PL.Test
                 newrow.RaitingsId = 1;
                 newrow.FormatId = 1;
                 newrow.ImagePath = "Test";
-                //newrow.InStockQty = 1;
+                newrow.InStockQty = 1;
                 
 
                 //Add the Row
