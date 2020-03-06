@@ -16,18 +16,18 @@ namespace PF.DVDCentral.BL
 
         public static int Insert(Order order)
         {
-            return Insert(order.CustomerId,order.OrderDate,order.UserId);
+            return Insert(order.CustomerId,order.OrderDate,order.UserId,order.ShipDate);
 
         }
 
-        public static int Update(int id, string description)
+        public static int Update(int customerId, DateTime orderdate, int userid, DateTime shipdate)
         {
             return 0;
         }
 
         public static int Update(Order order)
         {
-            return Update(Order.Id, Order.Description);
+            return Update(order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
         }
 
         public static int Delete(int id)

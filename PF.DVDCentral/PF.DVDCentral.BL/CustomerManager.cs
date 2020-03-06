@@ -10,7 +10,7 @@ namespace PF.DVDCentral.BL
 {
     public class CustomerManager
     {
-        public static int Insert(out int id, string firstname, string lastname, string address, string city, string state, string zip, string phone, string UserId)
+        public static int Insert(out int id, string firstname, string lastname, string address, string city, string state, string zip, string phone, string username)
         {
             try
             {
@@ -18,9 +18,9 @@ namespace PF.DVDCentral.BL
                 {
                     tblCustomer newrow = new tblCustomer();
 
-                    newrow.UserId = UserId;
+                    newrow.UserName = username;
                     newrow.Phone = phone;
-                    newrow.Zip = zip;
+                    newrow.ZIP = zip;
                     newrow.Address = address;
                     newrow.City = city;
                     newrow.State = state;
@@ -47,7 +47,7 @@ namespace PF.DVDCentral.BL
             try
             {
                 int id = 0;
-                int result = Insert(out id, customer.Description);
+                int result = Insert(out id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.UserName, customer.Zip, customer.Phone);
                 customer.Id = id;
                 return result;
             }
@@ -59,7 +59,7 @@ namespace PF.DVDCentral.BL
         }
 
 
-        public static int Update(int id, string description)
+        public static int Update(int id, string firstname, string lastname, string address, string city, string state, string zip, string phone, string username)
         {
             try
             {
@@ -68,8 +68,15 @@ namespace PF.DVDCentral.BL
                     tblCustomer updaterow = (from dt in dc.tblCustomers
                                            where dt.Id == id
                                            select dt).FirstOrDefault();
-
-                    updaterow.Description = description;
+                    
+                    updaterow.UserName = username;
+                    updaterow.Phone = phone;
+                    updaterow.ZIP = zip;
+                    updaterow.Address = address;
+                    updaterow.City = city;
+                    updaterow.State = state;
+                    updaterow.LastName = lastname;
+                    updaterow.FirstName = firstname;
                     return dc.SaveChanges();
                 }
             }
@@ -81,7 +88,7 @@ namespace PF.DVDCentral.BL
 
         public static int Update(Customer customer)
         {
-            return Update(customer.Id, customer.Description);
+            return Update(customer.Id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.UserName, customer.Zip, customer.Phone);
         }
         public static int Delete(int id)
         {
@@ -115,8 +122,16 @@ namespace PF.DVDCentral.BL
                         customers.Add(new Customer
                         {
                             Id = dt.Id,
-                            Description = dt.Description
-                        });
+                            FirstName = dt.FirstName,
+                            LastName = dt.LastName,
+                            Phone = dt.Phone,
+                            Zip = dt.ZIP,
+                            City = dt.City,
+                            State = dt.State,
+                            UserName = dt.UserName,
+                            Address = dt.Address
+
+                        }); ;
                     }
                     return customers;
                 }
@@ -139,7 +154,7 @@ namespace PF.DVDCentral.BL
                                      select dt).FirstOrDefault();
 
                     if (row != null)
-                        return new Customer { Id = row.Id, Description = row.Description };
+                        return new Customer { Id = row.Id, Address = row.Address, UserName = row.UserName, State = row.State, City = row.City, FirstName = row.FirstName, LastName = row.LastName, Phone = row.Phone, Zip = row.ZIP };
                     else
                         throw new Exception("Row was not found.");
 

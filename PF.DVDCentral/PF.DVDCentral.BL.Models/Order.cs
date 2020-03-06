@@ -16,7 +16,7 @@ namespace PF.DVDCentral.BL.Models
 
         public int UserId { get; set; }
 
-        public string PaymentReceipt { get; set; }
+        public DateTime ShipDate { get; set; }
 
 
     }
