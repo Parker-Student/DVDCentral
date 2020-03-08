@@ -20,26 +20,26 @@ namespace PF.DVDCentral.BL.Test
         
         public void LoadTest()
         {
-            List<Format> genres = FormatManager.Load();
-            Assert.AreEqual(3, genres.Count);
+            List<Format> format = FormatManager.Load();
+            Assert.AreEqual(3, format.Count);
         }
 
         public void InsertTest()
         {
-           Format genre = new Format { Description = "Horror" };
-           Assert.AreNotEqual(0, FormatManager.Insert(genre));
+           Format format = new Format { Description = "HD" };
+           Assert.AreNotEqual(0, FormatManager.Insert(format));
            
         }
         public void UpdateTest()
         {
-            Format genre = FormatManager.LoadById(4);
-            genre.Description = "Updated";
-            Assert.IsTrue(FormatManager.Update(genre) > 0);
+            Format format = FormatManager.LoadById(3);
+            format.Description = "Updated";
+            Assert.IsTrue(FormatManager.Update(format) > 0);
         }
 
         public void DeleteTest()
         {
-            Assert.IsTrue(FormatManager.Delete(4) > 0);
+            Assert.IsTrue(FormatManager.Delete(3) > 0);
         }
     }
 

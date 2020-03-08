@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from format in dc.tblFormats
                           select format;
 
-            int expected = 12;
+            int expected = 4;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);

@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from director in dc.tblDirectors
                           select director;
 
-            int expected = 3;
+            int expected = 4;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);

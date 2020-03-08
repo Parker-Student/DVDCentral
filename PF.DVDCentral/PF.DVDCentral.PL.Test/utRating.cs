@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from rating in dc.tblRatings
                           select rating;
 
-            int expected = 4;
+            int expected = 5;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);

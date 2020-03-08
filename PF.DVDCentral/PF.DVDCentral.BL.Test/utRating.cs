@@ -7,7 +7,7 @@ using PF.DVDCentral.BL.Models;
 namespace PF.DVDCentral.BL.Test
 {
     [TestClass]
-    public class utGenre
+    public class utRating
     {
         [TestMethod]
         public void RunAll()
@@ -20,26 +20,26 @@ namespace PF.DVDCentral.BL.Test
         
         public void LoadTest()
         {
-            List<Genre> genres = GenreManager.Load();
-            Assert.AreEqual(3, genres.Count);
+            List<Rating> ratings = RatingManager.Load();
+            Assert.AreEqual(4, ratings.Count);
         }
 
         public void InsertTest()
         {
-           Genre genre = new Genre { Description = "Horror" };
-           Assert.AreNotEqual(0, GenreManager.Insert(genre));
+           Rating rating = new Rating { Description = "PG" };
+           Assert.AreNotEqual(0, RatingManager.Insert(rating));
            
         }
         public void UpdateTest()
         {
-            Genre genre = GenreManager.LoadById(4);
-            genre.Description = "Updated";
-            Assert.IsTrue(GenreManager.Update(genre) > 0);
+            Rating rating = RatingManager.LoadById(4);
+            rating.Description = "Updated";
+            Assert.IsTrue(RatingManager.Update(rating) > 0);
         }
 
         public void DeleteTest()
         {
-            Assert.IsTrue(GenreManager.Delete(4) > 0);
+            Assert.IsTrue(RatingManager.Delete(4) > 0);
         }
     }
 

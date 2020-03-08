@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from genre in dc.tblGenres
                           select genre;
 
-            int expected = 12;
+            int expected = 13;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);

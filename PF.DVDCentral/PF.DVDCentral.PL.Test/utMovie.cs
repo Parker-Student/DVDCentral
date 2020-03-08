@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from Movie in dc.tblMovies
                           select Movie;
 
-            int expected = 3;
+            int expected = 4;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);
@@ -35,10 +35,10 @@ namespace PF.DVDCentral.PL.Test
                 newrow.Title = "Test";
                 newrow.Description = "Test";
                 newrow.Cost = 0;
-                newrow.RaitingsId = 1;
-                newrow.FormatId = 1;
+                newrow.RaitingsId = -1;
+                newrow.FormatId = -1;
                 newrow.ImagePath = "Test";
-                newrow.InStockQty = 1;
+                newrow.InStockQty = -1;
                 
 
                 //Add the Row

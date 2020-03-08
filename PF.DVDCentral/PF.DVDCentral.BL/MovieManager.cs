@@ -10,7 +10,7 @@ namespace PF.DVDCentral.BL
 {
     public class MovieManager
     {
-        public static int Insert(out int id, string description)
+        public static int Insert(out int id, string description, string imagepath, int formatid, decimal cost, int instockqty, int directorid, string title, int ratingsid )
         {
             try
             {
@@ -19,6 +19,12 @@ namespace PF.DVDCentral.BL
                     tblMovie newrow = new tblMovie();
 
                     newrow.Description = description;
+                    newrow.Title = title;
+                    newrow.Cost = cost;
+                    newrow.RaitingsId = ratingsid;
+                    newrow.FormatId = formatid;
+                    newrow.ImagePath = imagepath;
+                    newrow.InStockQty = instockqty;
                     newrow.Id = dc.tblMovies.Any() ? dc.tblMovies.Max(dt => dt.Id) + 1 : 1;
                     id = newrow.Id;
 
@@ -38,7 +44,7 @@ namespace PF.DVDCentral.BL
             try
             {
                 int id = 0;
-                int result = Insert(out id, movie.Description);
+                int result = Insert(out id, movie.Description, movie.ImagePath, movie.FormatId, movie.Cost, movie.InStockQty, movie.DirectorId, movie.Title, movie.RatingsId );
                 movie.Id = id;
                 return result;
             }

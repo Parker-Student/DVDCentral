@@ -20,21 +20,21 @@ namespace PF.DVDCentral.BL.Test
         
         public void LoadTest()
         {
-            List<Movie> genres = MovieManager.Load();
-            Assert.AreEqual(3, genres.Count);
+            List<Movie> movies = MovieManager.Load();
+            Assert.AreEqual(3, movies.Count);
         }
 
         public void InsertTest()
         {
-           Movie genre = new Movie { Description = "Horror" };
-           Assert.AreNotEqual(0, MovieManager.Insert(genre));
+           Movie movie = new Movie { Description = "test", Title = "Test", Cost = 1, ImagePath = "Test", RatingsId = -1, DirectorId = -1, FormatId = -1, InStockQty = -1};
+           Assert.AreNotEqual(0, MovieManager.Insert(movie));
            
         }
         public void UpdateTest()
         {
-            Movie genre = MovieManager.LoadById(4);
-            genre.Description = "Updated";
-            Assert.IsTrue(MovieManager.Update(genre) > 0);
+            Movie movie = MovieManager.LoadById(4);
+            movie.Description = "Updated";
+            Assert.IsTrue(MovieManager.Update(movie) > 0);
         }
 
         public void DeleteTest()

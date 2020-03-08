@@ -8,5 +8,5 @@
     [RaitingsId] INT NOT NULL, 
     [FormatId] INT NOT NULL, 
     [DirectorId] INT NOT NULL, 
-    [InStockQty] INT NOT NULL
+    [InStockQty] INT NULL
 )
