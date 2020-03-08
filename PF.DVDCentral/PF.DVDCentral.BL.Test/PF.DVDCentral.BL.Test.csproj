@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="utMovie.cs" />
     <Compile Include="utFormat.cs" />
+    <Compile Include="utDirector.cs" />
     <Compile Include="utRating.cs" />
     <Compile Include="utGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

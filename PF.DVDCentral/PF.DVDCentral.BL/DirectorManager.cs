@@ -4,32 +4,149 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PF.DVDCentral.BL.Models;
+using PF.DVDCentral.PL;
 
 namespace PF.DVDCentral.BL
 {
-    public class Director
+    public class DirectorManager
     {
-        public static int Insert()
+        public static int Insert(out int id, string firstname, string lastname)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblDirector newrow = new tblDirector();
+
+                    newrow.FirstName = firstname;
+                    newrow.LastName = lastname;
+                    newrow.Id = dc.tblDirectors.Any() ? dc.tblDirectors.Max(dt => dt.Id) + 1 : 1;
+                    id = newrow.Id;
+
+
+
+                    dc.tblDirectors.Add(newrow);
+                    return dc.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        public static int Update()
+
+        public static int Insert(Director director)
         {
-            return 0;
+            try
+            {
+                int id = 0;
+                int result = Insert(out id, director.FirstName, director.LastName);
+                director.Id = id;
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
-        public static int Delete()
+
+
+        public static int Update(int id, string firstname, string lastname)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblDirector updaterow = (from dt in dc.tblDirectors
+                                           where dt.Id == id
+                                           select dt).FirstOrDefault();
+
+                    updaterow.FirstName = firstname;
+                    updaterow.LastName = lastname;
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static int Update(Director director)
+        {
+            return Update(director.Id, director.FirstName,director.LastName);
+        }
+        public static int Delete(int id)
+        {
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblDirector deleterow = (from dt in dc.tblDirectors
+                                           where dt.Id == id
+                                           select dt).FirstOrDefault();
+
+                    dc.tblDirectors.Remove(deleterow);
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static List<Director> Load()
         {
-            return new List<Director>();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    List<Director> directors = new List<Director>();
+                    foreach (tblDirector dt in dc.tblDirectors)
+                    {
+                        directors.Add(new Director
+                        {
+                            Id = dt.Id,
+                            FirstName = dt.FirstName,
+                            LastName = dt.LastName
+
+                        });
+                    }
+                    return directors;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        public static Director LoadById()
+        public static Director LoadById(int id)
         {
-            return new Director();
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblDirector row = (from dt in dc.tblDirectors
+                                     where dt.Id == id
+                                     select dt).FirstOrDefault();
+
+                    if (row != null)
+                        return new Director { Id = row.Id, FirstName = row.FirstName, LastName = row.LastName };
+                    else
+                        throw new Exception("Row was not found.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
     }
 }
