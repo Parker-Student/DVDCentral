@@ -1,20 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Directors.aspx.cs" Inherits="PF.DVDCentral.UI.Directors" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Formats.aspx.cs" Inherits="PF.DVDCentral.UI.Formats" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <div class="header rounded-top">
-        <h3>Manage Directors</h3>
+        <h3>Manage Formats</h3>
     </div>
     <p></p>
 
     <div class="form-row ml-2 mt-2">
         <div class="control-label col-md-2">
-            <asp:Label ID="Label2" runat="server" Text="Directors:"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Formats:"></asp:Label>
         </div>
         <div class="control-label col-md-3">
-            <asp:DropDownList ID="ddlDirectors"
+            <asp:DropDownList ID="ddlFormats"
                 runat="server"
                 CssClass="form-control"
                 AutoPostBack="true"
-                OnSelectedIndexChanged="ddlDirectors_SelectedIndexChanged">
+                OnSelectedIndexChanged="ddlFormats_SelectedIndexChanged">
             </asp:DropDownList>
         </div>
     </div>
@@ -23,23 +23,10 @@
         <div class="control-label col-md-2">
             <asp:Label ID="Label3"
                 runat="server"
-                Text="First Name:"></asp:Label>
+                Text="Description:"></asp:Label>
         </div>
         <div class="control-label col-md-3">
-            <asp:TextBox ID="txtFirstName"
-                runat="server"
-                CssClass="form-control"></asp:TextBox>
-        </div>
-    </div>
-    
-    <div class="form-row ml-2 mt-2">
-        <div class="control-label col-md-2">
-            <asp:Label ID="Label1"
-                runat="server"
-                Text="Last Name:"></asp:Label>
-        </div>
-        <div class="control-label col-md-3">
-            <asp:TextBox ID="txtLastName"
+            <asp:TextBox ID="txtDescription"
                 runat="server"
                 CssClass="form-control"></asp:TextBox>
         </div>

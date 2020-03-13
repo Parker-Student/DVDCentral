@@ -11,7 +11,7 @@ namespace PF.DVDCentral.UI
 {
 
 
-    public partial class Directors
+    public partial class Formats
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace PF.DVDCentral.UI
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// ddlDirectors control.
+        /// ddlFormats control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDirectors;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFormats;
 
         /// <summary>
         /// Label3 control.
@@ -42,31 +42,13 @@ namespace PF.DVDCentral.UI
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// txtFirstName control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstName;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// txtLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastName;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
         /// btnInsert control.

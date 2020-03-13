@@ -9,43 +9,43 @@ using PF.DVDCentral.BL.Models;
 
 namespace PF.DVDCentral.UI
 {
-    public partial class Genres : System.Web.UI.Page
+    public partial class Formats : System.Web.UI.Page
     {
-        List<Genre> genres;
-        Genre genre;
+        List<Format> formats;
+        Format format;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                genres = GenreManager.Load();
+                formats = FormatManager.Load();
                 Rebind();
 
-                Session["genres"] = genres;
+                Session["formats"] = formats;
 
-                ddlGenres_SelectedIndexChanged(sender, e);
+                ddlFormats_SelectedIndexChanged(sender, e);
             }
             else
             {
-                genres = (List<Genre>)Session["genres"];
+                formats = (List<Format>)Session["formats"];
             }
         }
         private void Rebind()
         {
             // Clear out the binding to the ddl
-            ddlGenres.DataSource = null;
+            ddlFormats.DataSource = null;
 
             // Rebind to the ddl
-            ddlGenres.DataSource = genres;
+            ddlFormats.DataSource = formats;
 
             // Designate the field/property that will be displayed
-            ddlGenres.DataTextField = "Description";
+            ddlFormats.DataTextField = "Description";
 
             // Designate the field/property that is the primary key.
-            ddlGenres.DataValueField = "Id";
+            ddlFormats.DataValueField = "Id";
 
             // Do the binding
-            ddlGenres.DataBind();
+            ddlFormats.DataBind();
 
             txtDescription.Text = string.Empty;
         }
@@ -53,22 +53,22 @@ namespace PF.DVDCentral.UI
         {
             try
             {
-                genre = new Genre();
-                genre.Description = txtDescription.Text;
-                genre.Id = genres[ddlGenres.SelectedIndex].Id;
+                format = new Format();
+                format.Description = txtDescription.Text;
+                format.Id = formats[ddlFormats.SelectedIndex].Id;
 
-                int results = GenreManager.Insert(genre);
+                int results = FormatManager.Insert(format);
                 Response.Write("Inserted " + results + " rows...");
 
-                genres.Add(genre);
+                formats.Add(format);
 
                 Rebind();
 
                 if (results > 0)
                 {
-                    ddlGenres.SelectedValue = genre.Id.ToString();
+                    ddlFormats.SelectedValue = format.Id.ToString();
                 }
-                ddlGenres_SelectedIndexChanged(sender, e);
+                ddlFormats_SelectedIndexChanged(sender, e);
 
             }
             catch (Exception ex)
@@ -81,20 +81,20 @@ namespace PF.DVDCentral.UI
         {
             try
             {
-                genre = genres[ddlGenres.SelectedIndex];
+                format = formats[ddlFormats.SelectedIndex];
 
-                genre.Description = txtDescription.Text;
-                // genre.DegreeTypeId = degreeTypes[ddlDegreeTypes.SelectedIndex].Id;
+                format.Description = txtDescription.Text;
+                // format.DegreeTypeId = degreeTypes[ddlDegreeTypes.SelectedIndex].Id;
 
-                int results = GenreManager.Update(genre);
+                int results = FormatManager.Update(format);
                 Response.Write("Updated " + results + " rows...");
                 Rebind();
 
                 if (results > 0)
                 {
-                    ddlGenres.SelectedValue = genre.Id.ToString();
+                    ddlFormats.SelectedValue = format.Id.ToString();
                 }
-                ddlGenres_SelectedIndexChanged(sender, e);
+                ddlFormats_SelectedIndexChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -106,13 +106,13 @@ namespace PF.DVDCentral.UI
         {
             try
             {
-                genre = genres[ddlGenres.SelectedIndex];
+                format = formats[ddlFormats.SelectedIndex];
 
-                int results = GenreManager.Delete(genre.Id);
+                int results = FormatManager.Delete(format.Id);
                 Response.Write("Deleted " + results + " rows...");
-                genres.Remove(genre);
+                formats.Remove(format);
                 Rebind();
-                ddlGenres_SelectedIndexChanged(sender, e);
+                ddlFormats_SelectedIndexChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -120,11 +120,11 @@ namespace PF.DVDCentral.UI
             }
         }
 
-        protected void ddlGenres_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlFormats_SelectedIndexChanged(object sender, EventArgs e)
         {
-            genre = genres[ddlGenres.SelectedIndex];
-            txtDescription.Text = genre.Description;
-            ddlGenres.SelectedValue = genre.Id.ToString();
+            format = formats[ddlFormats.SelectedIndex];
+            txtDescription.Text = format.Description;
+            ddlFormats.SelectedValue = format.Id.ToString();
         }
     }
 }
