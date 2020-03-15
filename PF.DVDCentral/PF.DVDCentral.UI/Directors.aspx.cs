@@ -128,8 +128,8 @@ namespace PF.DVDCentral.UI
         protected void ddlDirectors_SelectedIndexChanged(object sender, EventArgs e)
         {
             director = directors[ddlDirectors.SelectedIndex];
-            director.FirstName = txtFirstName.Text;
-            director.LastName = txtLastName.Text;
+            txtFirstName.Text = director.FirstName;
+            txtLastName.Text = director.LastName;
             ddlDirectors.SelectedValue = director.Id.ToString();
         }
     }
