@@ -60,7 +60,6 @@ namespace PF.DVDCentral.PL.Test
                 if(row != null)
                 {
                     //change values
-                    row.Id = -99;
                     row.CustomerId = -99;
                     row.OrderDate = Convert.ToDateTime("2012-10-09");
                     row.ShipDate = Convert.ToDateTime("2012-10-09");

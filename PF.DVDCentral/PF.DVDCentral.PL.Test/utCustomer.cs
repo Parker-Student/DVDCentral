@@ -65,7 +65,6 @@ namespace PF.DVDCentral.PL.Test
                 if(row != null)
                 {
                     //change values
-                    row.Id = -99;
                     row.LastName = "test";
                     row.FirstName = "test";
                     row.Address = "test";
