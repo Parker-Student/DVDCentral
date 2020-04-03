@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from customer in dc.tblCustomers
                           select customer;
 
-            int expected = 3;
+            int expected = 4;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);
@@ -36,10 +36,11 @@ namespace PF.DVDCentral.PL.Test
                 newrow.FirstName = "test";
                 newrow.Address = "test";
                 newrow.City = "test";
-                newrow.State = "test";
-                newrow.ZIP = "test";
+                newrow.State = "WI";
+                newrow.Zip = "test";
                 newrow.Phone = "test";
                 newrow.UserId = -99;
+              
                 
 
                 //Add the Row
@@ -69,9 +70,9 @@ namespace PF.DVDCentral.PL.Test
                     row.FirstName = "test";
                     row.Address = "test";
                     row.City = "test";
-                    row.State = "test";
+                    row.State = "WI";
                     row.UserId = -99;
-                    row.ZIP = "test";
+                    row.Zip = "test";
                     row.Phone = "test";
 
                     int actual = dc.SaveChanges();

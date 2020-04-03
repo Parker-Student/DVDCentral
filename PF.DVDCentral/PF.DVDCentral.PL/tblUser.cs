@@ -12,16 +12,12 @@ namespace PF.DVDCentral.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class tblMovie
+    public partial class tblUser
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
-        public decimal Cost { get; set; }
-        public int RaitingsId { get; set; }
-        public int FormatId { get; set; }
-        public int DirectorId { get; set; }
-        public Nullable<int> InStockQty { get; set; }
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
     }
 }

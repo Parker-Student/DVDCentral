@@ -25,6 +25,7 @@ namespace PF.DVDCentral.PL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<tblCustomer> tblCustomers { get; set; }
         public virtual DbSet<tblDirector> tblDirectors { get; set; }
         public virtual DbSet<tblFormat> tblFormats { get; set; }
@@ -34,5 +35,6 @@ namespace PF.DVDCentral.PL
         public virtual DbSet<tblOrder> tblOrders { get; set; }
         public virtual DbSet<tblOrderItem> tblOrderItems { get; set; }
         public virtual DbSet<tblRating> tblRatings { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

@@ -5,15 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="18a8f88b6ebf4175ba6eba707a3ae429" Name="Diagram1">
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblCustomer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblDirector" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblFormat" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblGenre" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblMovie" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblMovieGenre" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblOrder" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblOrderItem" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblRating" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblCustomer" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblDirector" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblFormat" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblGenre" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblMovie" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblMovieGenre" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblOrder" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblOrderItem" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblRating" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PF.DVDCentral.DBModel.tblUser" Width="1.5" PointX="2.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

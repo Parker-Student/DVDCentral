@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>DVDCentral.tt</DependentUpon>
+    </Compile>
     <Compile Include="DVDCentral.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +94,9 @@
       <DependentUpon>DVDCentral.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRating.cs">
+      <DependentUpon>DVDCentral.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblUser.cs">
       <DependentUpon>DVDCentral.tt</DependentUpon>
     </Compile>
   </ItemGroup>

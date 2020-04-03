@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL.Test
             var results = from order in dc.tblOrders
                           select order;
 
-            int expected = 3;
+            int expected = 4;
             int actual = results.Count();
 
             Assert.AreEqual(expected, actual);
@@ -33,9 +33,10 @@ namespace PF.DVDCentral.PL.Test
                 //Set the column values
                 newrow.Id = -99;
                 newrow.CustomerId = -99;
-                newrow.OrderDate = new DateTime(2012-10-09);
-                newrow.ShipDate = new DateTime(2012 - 10 - 09);
+                newrow.OrderDate = Convert.ToDateTime("2012-10-09");
+                newrow.ShipDate = Convert.ToDateTime("2012-10-09");
                 newrow.UserId = -99;
+               
              
                 //Add the Row
                 dc.tblOrders.Add(newrow);
@@ -61,11 +62,14 @@ namespace PF.DVDCentral.PL.Test
                     //change values
                     row.Id = -99;
                     row.CustomerId = -99;
-                    row.OrderDate = new DateTime(2012 - 10 - 09);
-                    row.ShipDate = new DateTime(2012 - 10 - 09);
+                    row.OrderDate = Convert.ToDateTime("2012-10-09");
+                    row.ShipDate = Convert.ToDateTime("2012-10-09");
                     row.UserId = -99;
 
+
+                                 
                     int actual = dc.SaveChanges();
+
 
                     Assert.AreNotEqual(0, actual);
 
