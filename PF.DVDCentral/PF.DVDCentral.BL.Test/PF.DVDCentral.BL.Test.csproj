@@ -57,6 +57,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="utOrder.cs" />
     <Compile Include="utMovie.cs" />
     <Compile Include="utFormat.cs" />
     <Compile Include="utDirector.cs" />
