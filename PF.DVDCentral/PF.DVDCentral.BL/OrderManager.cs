@@ -7,6 +7,7 @@ using PF.DVDCentral.BL.Models;
 using PF.DVDCentral.PL;
 
 
+
 namespace PF.DVDCentral.BL
 {
     public class OrderManager
@@ -36,36 +37,69 @@ namespace PF.DVDCentral.BL
                     throw ex;
                 }
             }
-        }
+        
 
     public static int Insert(Order order)
     {
         try
         {
             int id = 0;
-            int result = Insert(out id, order.CustomerId, order.OrderDate, order.ShipDate, order.UserId);
+            int result = Insert(out id, order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
             order.Id = id;
             return result;
         }
         catch (Exception ex)
         {
+                throw ex;
 
-            throw ex;
-        }
+            }
     }
-        public static int Update(int customerId, DateTime orderdate, int userid, DateTime shipdate)
+        public static int Update(int id, int customerId, DateTime orderdate, int userid, DateTime shipdate)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblOrder updaterow = (from dt in dc.tblOrders
+                                          where dt.Id == id
+                                          select dt).FirstOrDefault();
+
+                    updaterow.CustomerId = customerId;
+                    updaterow.OrderDate = orderdate;
+                    updaterow.ShipDate = shipdate;
+                    updaterow.UserId = userid;
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public static int Update(Order order)
         {
-            return Update(order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
+            return Update(order.Id, order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
         }
 
         public static int Delete(int id)
         {
-            return 0;
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblOrder deleterow = (from dt in dc.tblOrders
+                                             where dt.Id == id
+                                             select dt).FirstOrDefault();
+
+                    dc.tblOrders.Remove(deleterow);
+                    return dc.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 
@@ -110,6 +144,35 @@ namespace PF.DVDCentral.BL
 
                     if (row != null)
                         return new Order {
+                            Id = row.Id,
+                            CustomerId = row.CustomerId,
+                            OrderDate = row.OrderDate,
+                            ShipDate = row.ShipDate,
+                            UserId = row.UserId
+                        };
+                    else
+                        throw new Exception("Row was not found.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static Order LoadByCustomerId(int customerId)
+        {
+            try
+            {
+                using (DVDCentralEntities dc = new DVDCentralEntities())
+                {
+                    tblOrder row = (from dt in dc.tblOrders
+                                    where dt.CustomerId == customerId
+                                    select dt).FirstOrDefault();
+
+                    if (row != null)
+                        return new Order
+                        {
                             Id = row.Id,
                             CustomerId = row.CustomerId,
                             OrderDate = row.OrderDate,

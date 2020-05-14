@@ -106,16 +106,39 @@ namespace PF.DVDCentral.BL
             {
                 using (DVDCentralEntities dc = new DVDCentralEntities())
                 {
-                    List<Movie> movies = new List<Movie>();
-                    foreach (tblMovie dt in dc.tblMovies)
+                    List<Movie> results = new List<Movie>();
+                   
+                    var movies = (from m in dc.tblMovies
+                                    join r in dc.tblRatings on m.RaitingsId equals r.Id
+                                    join d in dc.tblDirectors on m.DirectorId equals d.Id
+                                    join f in dc.tblFormats on m.FormatId equals f.Id
+                                    orderby m.Title
+                                    select new
+                                    {
+                                        m.Id,
+                                        m.Title,
+                                        m.ImagePath,
+                                        m.Cost,
+                                        m.InStockQty,
+                                        Rating = r.Description,
+                                        Format = f.Description,
+                                        Director = d.FirstName + " " + d.LastName
+                                    }).ToList();
+
+                    movies.ForEach(pdt => results.Add(new Movie
                     {
-                        movies.Add(new Movie
-                        {
-                            Id = dt.Id,
-                            Description = dt.Description
-                          });
-                    }
-                    return movies;
+
+                        Id = pdt.Id,
+                        Title = pdt.Title,
+                        ImagePath = pdt.ImagePath,
+                        Cost = pdt.Cost,
+                        InStockQty = pdt.InStockQty,
+                        Rating = pdt.Rating,
+                        Format = pdt.Format,
+                        Director = pdt.Director
+                    }));
+
+                    return results;
                 }
             }
             catch (Exception ex)
@@ -131,15 +154,42 @@ namespace PF.DVDCentral.BL
             {
                 using (DVDCentralEntities dc = new DVDCentralEntities())
                 {
-                    tblMovie row = (from dt in dc.tblMovies
-                                     where dt.Id == id
-                                     select dt).FirstOrDefault();
+                    var pdt = (from m in dc.tblMovies
+                                  join r in dc.tblRatings on m.RaitingsId equals r.Id
+                                  join d in dc.tblDirectors on m.DirectorId equals d.Id
+                                  join f in dc.tblFormats on m.FormatId equals f.Id
+                                  where m.Id == id
+                                  select new
+                                  {
+                                      m.Id,
+                                      m.Title,
+                                      m.ImagePath,
+                                      m.Cost,
+                                      m.InStockQty,
+                                      Rating = r.Description,
+                                      Format = f.Description,
+                                      Director = d.FirstName + " " + d.LastName
+                                  }).FirstOrDefault();
+                    if (pdt != null)
+                    {
+                        Movie movie = new Movie
+                        {
+                            Id = pdt.Id,
+                            Title = pdt.Title,
+                            ImagePath = pdt.ImagePath,
+                            Cost = pdt.Cost,
+                            InStockQty = pdt.InStockQty,
+                            Rating = pdt.Rating,
+                            Format = pdt.Format,
+                            Director = pdt.Director
+                        };
+                        return movie;
 
-                    if (row != null)
-                        return new Movie { Id = row.Id, Description = row.Description };
+                    }
                     else
-                        throw new Exception("Row was not found.");
-
+                    {
+                        throw new Exception("Row not found");
+                    }
                 }
             }
             catch (Exception ex)

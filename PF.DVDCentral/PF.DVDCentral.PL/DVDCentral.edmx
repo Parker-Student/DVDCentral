@@ -59,7 +59,7 @@
           <Property Name="RaitingsId" Type="int" Nullable="false" />
           <Property Name="FormatId" Type="int" Nullable="false" />
           <Property Name="DirectorId" Type="int" Nullable="false" />
-          <Property Name="InStockQty" Type="int" />
+          <Property Name="InStockQty" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMovieGenre">
           <Key>
@@ -189,7 +189,7 @@
           <Property Name="RaitingsId" Type="Int32" Nullable="false" />
           <Property Name="FormatId" Type="Int32" Nullable="false" />
           <Property Name="DirectorId" Type="Int32" Nullable="false" />
-          <Property Name="InStockQty" Type="Int32" />
+          <Property Name="InStockQty" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tblMovieGenre">
           <Key>

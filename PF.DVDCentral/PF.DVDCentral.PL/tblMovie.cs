@@ -22,6 +22,6 @@ namespace PF.DVDCentral.PL
         public int RaitingsId { get; set; }
         public int FormatId { get; set; }
         public int DirectorId { get; set; }
-        public Nullable<int> InStockQty { get; set; }
+        public int InStockQty { get; set; }
     }
 }

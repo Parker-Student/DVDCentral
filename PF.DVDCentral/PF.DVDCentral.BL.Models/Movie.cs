@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace PF.DVDCentral.BL.Models
         public string Title { get; set; }
         public string Description { get; set; }
 
+        [DisplayName("Image")]
         public string ImagePath { get; set; }
 
         public decimal Cost { get; set; }
@@ -22,6 +24,11 @@ namespace PF.DVDCentral.BL.Models
         public int FormatId { get; set; }
 
         public int DirectorId { get; set; }
+
+        public string Format { get; set; }
+        public string Director { get; set; }
+
+        public string Rating { get; set; }
 
     }
 }

@@ -8,35 +8,102 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">DVD Central</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Togger Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Customer">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Director">Director</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Format">Format</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Genre">Genre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Movie">Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Order">Order</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/Rating">Rating</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/User/Login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" runat="server" href="~/User/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar rounded-top">
+                <div class="header rounded-top">
+                    <h3>Movies</h3>
+                </div>
+                <div>
+                    @{ Html.RenderAction("Sidebar", "Program");}
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="header rounded-top">
+                <h3>Movies</h3>
+            </div>
+            <div>
+                @{ Html.RenderAction("CartDisplay", "ShoppingCart");}
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+        <div id="overlay" onclick="off()">
+            <div id="imagepropbig">
+                <img src="#" class="imagepropbig" id="output" />
+            </div>
+        </div>
+
+        <div class="col-md-9 main body-content rounded-top">
+            <div class="header rounded-top">
+                <h3>@ViewBag.Title</h3>
+            </div>
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        function on(picture) {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("output").src = picture;
+        }
+        function off() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
 </body>
 </html>
