@@ -36,11 +36,17 @@ namespace PF.DVDCentral.MVCUI.Controllers
 
             }
         }
-
+        [ChildActionOnly]
+        public ActionResult Sidebar()
+        {
+            var programs = MovieManager.Load();
+            return PartialView(programs);
+        }
         // GET: Movie/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Movie Movie = MovieManager.LoadById(id);
+            return View(Movie);
         }
 
         // GET: Movie/Create
@@ -90,15 +96,28 @@ namespace PF.DVDCentral.MVCUI.Controllers
         // GET: Movie/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (Authenticate.IsAuthenticated())
+            {
+                Movie movie = MovieManager.LoadById(id);
+                return View(movie);
+            }
+
+
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnurl = HttpContext.Request.Url });
+
+
+            }
         }
 
         // POST: Movie/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Movie movie)
         {
             try
             {
+                MovieManager.Delete(id);
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");

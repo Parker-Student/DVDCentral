@@ -63,7 +63,7 @@
                     <h3>Movies</h3>
                 </div>
                 <div>
-                    @{ Html.RenderAction("Sidebar", "Program");}
+                    @{ Html.RenderAction("Sidebar", "Movie");}
                 </div>
             </div>
             <div class="header rounded-top">
@@ -91,7 +91,7 @@
             </footer>
         </div>
     </div>
-    </div>
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

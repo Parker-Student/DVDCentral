@@ -172,6 +172,8 @@
     <Content Include="Views\Director\Details.cshtml" />
     <Content Include="Views\Director\Create.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
+    <Content Include="Views\Movie\Sidebar.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
