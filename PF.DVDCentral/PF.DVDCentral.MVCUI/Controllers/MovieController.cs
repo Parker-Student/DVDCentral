@@ -50,51 +50,41 @@ namespace PF.DVDCentral.MVCUI.Controllers
         // GET: Movie/Create
         public ActionResult Create()
         {
-            Movie movie = new Movie();
 
-            //MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
 
-            //pdts.Movie = new Movie();
-            //pdts.Genres = GenreManager.Load();
-            //pdts.Directors = DirectorManager.Load();
-            //pdts.Ratings = RatingManager.Load();
-            //pdts.Formats = FormatManager.Load();
-           
+            if (Authenticate.IsAuthenticated())
+            {
 
-            return View(movie);
-            //if (Authenticate.IsAuthenticated())
-            //{
+                MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
 
-            //    MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+                pdts.Genres = GenreManager.Load();
+                pdts.Directors = DirectorManager.Load();
+                pdts.Ratings = RatingManager.Load();
+                pdts.Formats = FormatManager.Load();
+                pdts.Movie = new Movie();
 
-            //    pdts.Genres = GenreManager.Load();
-            //    pdts.Directors = DirectorManager.Load();
-            //    pdts.Ratings = RatingManager.Load();
-            //    pdts.Formats = FormatManager.Load();
-            //    pdts.Movie = new Movie();
+                return View(pdts);
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
 
-            //    return View(pdts);
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Login", "User");
-
-            //}
+            }
         }
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(Movie movie)
+        public ActionResult Create(MovieGenresDirectorsRaitingsFormats pdts)
         {
             try
             {
-                if (movie.File != null)
+                if (pdts.File != null)
                 {
-                    movie.ImagePath = movie.File.FileName;
-                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(movie.File.FileName));
+                    pdts.Movie.ImagePath = pdts.File.FileName;
+                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(pdts.File.FileName));
                     if (!System.IO.File.Exists(target))
                     {
-                        movie.File.SaveAs(target);
+                        pdts.File.SaveAs(target);
                         ViewBag.Message = "File Uploaded Successfully...";
                     }
                     else
@@ -104,13 +94,13 @@ namespace PF.DVDCentral.MVCUI.Controllers
                 }
 
                 // TODO: Add insert logic here
-                MovieManager.Insert(movie);
+                MovieManager.Insert(pdts.Movie);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
-                return View(movie);
+                return View(pdts);
             }
         }
 
@@ -119,14 +109,15 @@ namespace PF.DVDCentral.MVCUI.Controllers
         {
 
 
+
             if (Authenticate.IsAuthenticated())
             {
                 MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
-                pdts.Movie = MovieManager.LoadById(id);
                 pdts.Genres = GenreManager.Load();
                 pdts.Directors = DirectorManager.Load();
                 pdts.Ratings = RatingManager.Load();
                 pdts.Formats = FormatManager.Load();
+                pdts.Movie = MovieManager.LoadById(id);
 
                 return View(pdts);
             }

@@ -334,6 +334,8 @@
     <Content Include="Views\Genre\Sidebar.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Movie\Delete.cshtml" />
+    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

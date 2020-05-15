@@ -49,7 +49,7 @@ namespace PF.DVDCentral.MVCUI.Controllers
             Movie movie = MovieManager.LoadById(id);
             ShoppingCartManager.Add(cart, movie);
             Session["cart"] = cart;
-            return RedirectToAction("Index", "ProgDec");
+            return RedirectToAction("Index", "Movie");
         }
 
 

@@ -46,7 +46,7 @@
         <div class="col-md-10">
             <img src="~/images/@Model.Movie.ImagePath" id="programimage" class="imagepropmed" alt="@Model.Movie.Description" onclick="on('/images/@Model.Movie.ImagePath');" /> <br /><br />
             <input type="file" name="File" id="File" accept="image/*" onchange="loadFile(event)" />
-            @Html.ValidationMessageFor(model => model.Movie.ImagePath, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Movie.Id, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -54,7 +54,7 @@
         @Html.LabelFor(model => model.Movie.Director, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @*@Html.EditorFor(model => model.Movie.DegreeTypeId, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.DropDownListFor(model => model.Movie.Director, new SelectList(Model.Directors, "Id", "Description", Model.Directors), null, new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Movie.Director, new SelectList(Model.Directors, "Id", "FullNameFirst", Model.Directors), null, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Movie.Director, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -12,12 +12,13 @@ namespace PF.DVDCentral.MVCUI.Controllers
     {
         public ActionResult Login(string returnurl)
         {
-         
+            ViewBag.ReturnUrl = returnurl;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(User user, string returnurl)
         {
             try
             {
@@ -25,8 +26,8 @@ namespace PF.DVDCentral.MVCUI.Controllers
                 {
                     //Login worked. Save user to session.
                     Session["user"] = user;
-                    return RedirectToAction("Index", "Movie");
-                   // return Redirect(returnurl);
+                   // return RedirectToAction("Index", "Movie");
+                    return Redirect(returnurl);
                 }
                 ViewBag.Message = "Sorry no soup for you.";
                 return View(user);
@@ -61,16 +62,19 @@ namespace PF.DVDCentral.MVCUI.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Title = "Create";
+
+            User user = new User();
+            return View(user);
         }
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
-                // TODO: Add insert logic here
+                UserManager.Insert(user);
 
                 return RedirectToAction("Index");
             }

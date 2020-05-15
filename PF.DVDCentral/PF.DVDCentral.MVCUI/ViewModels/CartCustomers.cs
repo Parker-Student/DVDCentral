@@ -10,10 +10,10 @@ namespace PF.DVDCentral.MVCUI.ViewModels
 {
     public class CartCustomers
     {
-        //public ShoppingCart Cart { get; set; }
+       public ShoppingCart Cart { get; set; }
 
         public List<Customer> Customers { get; set; }
 
-        //public Customer
+        
     }
 }
