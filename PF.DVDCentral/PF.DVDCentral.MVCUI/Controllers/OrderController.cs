@@ -11,7 +11,8 @@ namespace PF.DVDCentral.MVCUI.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("ShoppingCart","Index");
+
         }
 
         // GET: Order/Details/5

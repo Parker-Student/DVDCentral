@@ -81,7 +81,7 @@ namespace PF.DVDCentral.BL
 
             //Used to default some data
 
-            User newuser = new User( 1, "Parker", "Parker", "Foord", "parker");
+            User newuser = new User("Parker", "Parker", "Foord", "parker");
             Insert(newuser);
 
         }

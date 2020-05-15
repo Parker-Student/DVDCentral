@@ -157,7 +157,6 @@
     </Compile>
     <Compile Include="Models\Authenticate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CartCustomers.cs" />
     <Compile Include="ViewModels\CustomerOrders.cs" />
     <Compile Include="ViewModels\MovieGenresDirectorsRaitingsFormats.cs" />
   </ItemGroup>
