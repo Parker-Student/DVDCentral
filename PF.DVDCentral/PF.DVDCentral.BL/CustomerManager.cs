@@ -18,7 +18,7 @@ namespace PF.DVDCentral.BL
                 {
                     tblCustomer newrow = new tblCustomer();
 
-                    newrow.UserId = userId;
+                    newrow.UserName = userId;
                     newrow.Phone = phone;
                     newrow.Zip = zip;
                     newrow.Address = address;
@@ -47,7 +47,7 @@ namespace PF.DVDCentral.BL
             try
             {
                 int id = 0;
-                int result = Insert(out id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.Phone, customer.Zip, customer.UserId);
+                int result = Insert(out id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.Phone, customer.Zip, customer.UserName);
                 customer.Id = id;
                 return result;
             }
@@ -69,7 +69,7 @@ namespace PF.DVDCentral.BL
                                            where dt.Id == id
                                            select dt).FirstOrDefault();
                     
-                    updaterow.UserId = userId;
+                    updaterow.UserName = userId;
                     updaterow.Phone = phone;
                     updaterow.Zip = zip;
                     updaterow.Address = address;
@@ -88,7 +88,7 @@ namespace PF.DVDCentral.BL
 
         public static int Update(Customer customer)
         {
-            return Update(customer.Id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.Phone, customer.Zip, customer.UserId);
+            return Update(customer.Id, customer.FirstName, customer.LastName, customer.Address, customer.City, customer.State, customer.Phone, customer.Zip, customer.UserName);
         }
         public static int Delete(int id)
         {
@@ -128,7 +128,7 @@ namespace PF.DVDCentral.BL
                             Zip = dt.Zip,
                             City = dt.City,
                             State = dt.State,
-                            UserId = dt.UserId,
+                            UserName = dt.UserName,
                             Address = dt.Address
 
                         }); ;
@@ -154,7 +154,7 @@ namespace PF.DVDCentral.BL
                                      select dt).FirstOrDefault();
 
                     if (row != null)
-                        return new Customer { Id = row.Id, Address = row.Address, UserId = row.UserId, State = row.State, City = row.City, FirstName = row.FirstName, LastName = row.LastName, Phone = row.Phone, Zip = row.Zip };
+                        return new Customer { Id = row.Id, Address = row.Address, UserName = row.UserName, State = row.State, City = row.City, FirstName = row.FirstName, LastName = row.LastName, Phone = row.Phone, Zip = row.Zip };
                     else
                         throw new Exception("Row was not found.");
 

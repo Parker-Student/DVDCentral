@@ -24,7 +24,7 @@ namespace PF.DVDCentral.BL
 
         }
 
-        public static void Insert(int userid, string firstname, string lastname, string password)
+        public static void Insert(string username, string firstname, string lastname, string password)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace PF.DVDCentral.BL
                     newuser.Password = GetHash(password);
                     newuser.FirstName = firstname;
                     newuser.LastName = lastname;
-                    newuser.UserId = userid;
+                    newuser.UserName = username;
 
                     dc.tblUsers.Add(newuser);
                     dc.SaveChanges();
@@ -61,7 +61,7 @@ namespace PF.DVDCentral.BL
                     newuser.Password = GetHash(user.Password);
                     newuser.FirstName = user.FirstName;
                     newuser.LastName = user.LastName;
-                    newuser.UserId = user.UserId;
+                    newuser.UserName = user.UserName;
 
                     dc.tblUsers.Add(newuser);
                     dc.SaveChanges();
@@ -81,7 +81,7 @@ namespace PF.DVDCentral.BL
 
             //Used to default some data
 
-            User newuser = new User( 1, 1, "Parker", "Foord", "parker");
+            User newuser = new User( 1, "Parker", "Parker", "Foord", "parker");
             Insert(newuser);
 
         }
@@ -90,13 +90,13 @@ namespace PF.DVDCentral.BL
         {
             try
             {
-                if (!string.IsNullOrEmpty(user.UserId.ToString()))
+                if (!string.IsNullOrEmpty(user.UserName.ToString()))
                 {
                     if (!string.IsNullOrEmpty(user.Password))
                     {
                         using (DVDCentralEntities dc = new DVDCentralEntities())
                         {
-                            tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.UserId == user.UserId);
+                            tblUser tblUser = dc.tblUsers.FirstOrDefault(u => u.UserName == user.UserName);
                             if(tblUser != null)
                             {
                                 // Check the password

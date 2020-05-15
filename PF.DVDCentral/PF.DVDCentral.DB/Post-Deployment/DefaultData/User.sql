@@ -1,9 +1,9 @@
 ﻿BEGIN
-	INSERT INTO dbo.tblUser(Id,FirstName,LastName,UserId,Password)
+	INSERT INTO dbo.tblUser(Id,FirstName,LastName,UserName,Password)
 	VALUES
-	(1, 'James', 'Oscar',1,'password123'),
-	(2, 'Morgan', 'Dean',2,'password123'),
-	(3, 'John', 'Chuck',3,'password123')
+	(1, 'James', 'Oscar','Parker','parker'),
+	(2, 'Morgan', 'Dean','Morgan','password123'),
+	(3, 'John', 'Chuck','Chuck','password123')
 
 
 END

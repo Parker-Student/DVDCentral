@@ -10,9 +10,9 @@ namespace PF.DVDCentral.BL.Models
     public class User
     {
         public int Id { get; set; }
-        [DisplayName("User Id")]
+        [DisplayName("User Name")]
 
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         [DisplayName("First Name")]
 
         public string FirstName { get; set; }
@@ -28,29 +28,29 @@ namespace PF.DVDCentral.BL.Models
 
         }
 
-        public User(int userid, string password)
+        public User(string username, string password)
         {
             // A User is trying to log in
-            UserId = userid;
+            UserName = username;
             Password = password;
 
 
         }
 
-        public User(int id, int userid, string firstname, string lastname, string password)
+        public User(int id, string username, string firstname, string lastname, string password)
         {
             //Updated a user
-            UserId = userid;
+            UserName = username;
             Password = password;
             Id = id;
             FirstName = firstname;
             Password = password;
 
         }
-        public User(int userid, string firstname, string lastname, string password)
+        public User(string username, string firstname, string lastname, string password)
         {
             //creating a user
-            UserId = userid;
+            UserName = username;
             Password = password;
             FirstName = firstname;
             Password = password;

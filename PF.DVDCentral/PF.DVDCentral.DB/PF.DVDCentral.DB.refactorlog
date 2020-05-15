@@ -19,14 +19,14 @@
     <Property Name="ElementType" Value="SqlSimpleColumn" />
     <Property Name="ParentElementName" Value="[dbo].[tblCustomer]" />
     <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="UserId" />
+    <Property Name="NewName" Value="UserName" />
   </Operation>
   <Operation Name="Rename Refactor" Key="6093279d-b996-4daa-89cc-2259e765904d" ChangeDateTime="02/12/2020 00:27:43">
     <Property Name="ElementName" Value="[dbo].[tblCustomer].[UserName]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
     <Property Name="ParentElementName" Value="[dbo].[tblCustomer]" />
     <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="UserId" />
+    <Property Name="NewName" Value="UserName" />
   </Operation>
   <Operation Name="Rename Refactor" Key="b75e6171-11fa-4e62-91d9-288c7633e000" ChangeDateTime="02/18/2020 23:44:46">
     <Property Name="ElementName" Value="[dbo].[tblOrder].[ShipDat]" />
@@ -41,5 +41,12 @@
     <Property Name="ParentElementName" Value="[dbo].[tblCustomer]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Zip" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6de6fbda-f48a-4f53-a22d-84d4576899e8" ChangeDateTime="05/15/2020 04:37:24">
+    <Property Name="ElementName" Value="[dbo].[tblUser].[UserName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tblUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserName" />
   </Operation>
 </Operations>

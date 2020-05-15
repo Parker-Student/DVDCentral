@@ -39,7 +39,7 @@ namespace PF.DVDCentral.PL.Test
                 newrow.State = "WI";
                 newrow.Zip = "test";
                 newrow.Phone = "test";
-                newrow.UserId = -99;
+                newrow.UserName = -99;
               
                 
 
@@ -70,7 +70,7 @@ namespace PF.DVDCentral.PL.Test
                     row.Address = "test";
                     row.City = "test";
                     row.State = "WI";
-                    row.UserId = -99;
+                    row.UserName = -99;
                     row.Zip = "test";
                     row.Phone = "test";
 

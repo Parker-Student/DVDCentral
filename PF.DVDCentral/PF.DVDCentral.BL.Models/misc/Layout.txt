@@ -10,7 +10,7 @@ City (varchar(50))
 State
 ZIP (int)
 Phone  (varchar(50))
-UserId (varchar(50))
+UserName (varchar(50))
 
 Director:
 ID* (int)
@@ -60,7 +60,7 @@ Description (varchar(50))
 
 User:
 Id(int)
-UserId(int)
+UserName(int)
 FirstName
 LastName
 Password

@@ -27,7 +27,7 @@ namespace PF.DVDCentral.BL.Test
         public void InsertTest()
         {
            Order order = new Order {CustomerId = -99, OrderDate = Convert.ToDateTime("2012-10-09"), 
-               ShipDate = Convert.ToDateTime("2012-10-09"), UserId = -99
+               ShipDate = Convert.ToDateTime("2012-10-09"), UserName = -99
         };
            Assert.AreNotEqual(0, OrderManager.Insert(order));
            
@@ -38,7 +38,7 @@ namespace PF.DVDCentral.BL.Test
             order.CustomerId = -99;
             order.OrderDate = Convert.ToDateTime("2012-10-09");
             order.ShipDate = Convert.ToDateTime("2012-10-09");
-            order.UserId = -99;
+            order.UserName = -99;
             Assert.IsTrue(OrderManager.Update(order) > 0);
         }
 

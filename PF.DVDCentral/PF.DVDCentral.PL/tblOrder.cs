@@ -17,7 +17,7 @@ namespace PF.DVDCentral.PL
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public int UserId { get; set; }
+        public int UserName { get; set; }
         public System.DateTime ShipDate { get; set; }
     }
 }

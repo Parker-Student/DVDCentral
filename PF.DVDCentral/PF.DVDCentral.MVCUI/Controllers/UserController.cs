@@ -25,8 +25,8 @@ namespace PF.DVDCentral.MVCUI.Controllers
                 {
                     //Login worked. Save user to session.
                     Session["user"] = user;
-                    // return RedirectToAction("Index", "ProgDec");
-                    return Redirect(returnurl);
+                    return RedirectToAction("Index", "ProgDec");
+                   // return Redirect(returnurl);
                 }
                 ViewBag.Message = "Sorry no soup for you.";
                 return View(user);

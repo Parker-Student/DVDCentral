@@ -12,7 +12,7 @@ namespace PF.DVDCentral.BL
 {
     public class OrderManager
     {
-        public static int Insert(out int id, int customerId, DateTime orderdate, int userid, DateTime shipdate)
+        public static int Insert(out int id, int customerId, DateTime orderdate, int username, DateTime shipdate)
         {
                try
                 {
@@ -23,7 +23,7 @@ namespace PF.DVDCentral.BL
                     newrow.CustomerId = customerId;
                     newrow.OrderDate = orderdate;
                     newrow.ShipDate = shipdate;
-                    newrow.UserId = userid;
+                    newrow.UserName = username;
                     newrow.Id = dc.tblOrders.Any() ? dc.tblOrders.Max(dt => dt.Id) + 1 : 1;
                         id = newrow.Id;
 
@@ -44,7 +44,7 @@ namespace PF.DVDCentral.BL
         try
         {
             int id = 0;
-            int result = Insert(out id, order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
+            int result = Insert(out id, order.CustomerId, order.OrderDate, order.UserName, order.ShipDate);
             order.Id = id;
             return result;
         }
@@ -54,7 +54,7 @@ namespace PF.DVDCentral.BL
 
             }
     }
-        public static int Update(int id, int customerId, DateTime orderdate, int userid, DateTime shipdate)
+        public static int Update(int id, int customerId, DateTime orderdate, int username, DateTime shipdate)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace PF.DVDCentral.BL
                     updaterow.CustomerId = customerId;
                     updaterow.OrderDate = orderdate;
                     updaterow.ShipDate = shipdate;
-                    updaterow.UserId = userid;
+                    updaterow.UserName = username;
                     return dc.SaveChanges();
                 }
             }
@@ -79,7 +79,7 @@ namespace PF.DVDCentral.BL
 
         public static int Update(Order order)
         {
-            return Update(order.Id, order.CustomerId, order.OrderDate, order.UserId, order.ShipDate);
+            return Update(order.Id, order.CustomerId, order.OrderDate, order.UserName, order.ShipDate);
         }
 
         public static int Delete(int id)
@@ -118,7 +118,7 @@ namespace PF.DVDCentral.BL
                             CustomerId = dt.CustomerId,
                             OrderDate = dt.OrderDate,
                             ShipDate = dt.ShipDate,
-                            UserId = dt.UserId
+                            UserName = dt.UserName
                            
                         }) ;
                     }
@@ -148,7 +148,7 @@ namespace PF.DVDCentral.BL
                             CustomerId = row.CustomerId,
                             OrderDate = row.OrderDate,
                             ShipDate = row.ShipDate,
-                            UserId = row.UserId
+                            UserName = row.UserName
                         };
                     else
                         throw new Exception("Row was not found.");
@@ -177,7 +177,7 @@ namespace PF.DVDCentral.BL
                             CustomerId = row.CustomerId,
                             OrderDate = row.OrderDate,
                             ShipDate = row.ShipDate,
-                            UserId = row.UserId
+                            UserName = row.UserName
                         };
                     else
                         throw new Exception("Row was not found.");

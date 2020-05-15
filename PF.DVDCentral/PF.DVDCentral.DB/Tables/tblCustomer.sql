@@ -8,5 +8,5 @@
     [State] VARCHAR(2) NOT NULL, 
     [Zip] VARCHAR(10) NOT NULL, 
     [Phone] VARCHAR(50) NOT NULL, 
-    [UserId] INT NOT NULL 
+    [UserName] INT NOT NULL 
 )

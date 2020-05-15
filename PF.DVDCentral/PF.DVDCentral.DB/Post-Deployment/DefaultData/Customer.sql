@@ -1,5 +1,5 @@
 ﻿BEGIN
-	INSERT INTO dbo.tblCustomer(Id,FirstName,LastName,Address, City, State, Zip, Phone, UserId)
+	INSERT INTO dbo.tblCustomer(Id,FirstName,LastName,Address, City, State, Zip, Phone, UserName)
 	VALUES
 	(1, 'James', 'Yellow','111 one lane','Appleton','WI','54956','999999999',1),
 	(2, 'James', 'Yellow','111 one lane','Appleton','WI','54956','999999999',2),

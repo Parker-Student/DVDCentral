@@ -23,7 +23,7 @@
           <Property Name="State" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="Zip" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDirector">
           <Key>
@@ -76,7 +76,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="int" Nullable="false" />
           <Property Name="ShipDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="tblOrderItem">
@@ -100,7 +100,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
@@ -153,7 +153,7 @@
           <Property Name="State" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="Zip" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDirector">
           <Key>
@@ -206,7 +206,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="Int32" Nullable="false" />
           <Property Name="ShipDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="tblOrderItem">
@@ -230,10 +230,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -251,7 +251,7 @@
           <EntitySetMapping Name="tblCustomers">
             <EntityTypeMapping TypeName="PF.DVDCentral.DBModel.tblCustomer">
               <MappingFragment StoreEntitySet="tblCustomer">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="State" ColumnName="State" />
@@ -316,7 +316,7 @@
             <EntityTypeMapping TypeName="PF.DVDCentral.DBModel.tblOrder">
               <MappingFragment StoreEntitySet="tblOrder">
                 <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -344,10 +344,10 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="PF.DVDCentral.DBModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -35,7 +35,7 @@ namespace PF.DVDCentral.PL.Test
                 newrow.CustomerId = -99;
                 newrow.OrderDate = Convert.ToDateTime("2012-10-09");
                 newrow.ShipDate = Convert.ToDateTime("2012-10-09");
-                newrow.UserId = -99;
+                newrow.UserName = -99;
                
              
                 //Add the Row
@@ -63,7 +63,7 @@ namespace PF.DVDCentral.PL.Test
                     row.CustomerId = -99;
                     row.OrderDate = Convert.ToDateTime("2012-10-09");
                     row.ShipDate = Convert.ToDateTime("2012-10-09");
-                    row.UserId = -99;
+                    row.UserName = -99;
 
 
                                  

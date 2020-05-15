@@ -22,6 +22,6 @@ namespace PF.DVDCentral.PL
         public string State { get; set; }
         public string Zip { get; set; }
         public string Phone { get; set; }
-        public int UserId { get; set; }
+        public int UserName { get; set; }
     }
 }
