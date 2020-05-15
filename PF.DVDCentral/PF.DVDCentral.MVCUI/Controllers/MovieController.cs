@@ -195,5 +195,150 @@ namespace PF.DVDCentral.MVCUI.Controllers
             }
         }
         #endregion
+        #region "WebAPI"
+        private static HttpClient InitializeClient()
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:50409/api/");
+            return client;
+        }
+
+        public ActionResult Get()
+        {
+            HttpClient client = InitializeClient();
+
+
+            //Do the actual call to the WebAPI
+            HttpResponseMessage response = client.GetAsync("Movie").Result;
+
+            //Parse the result
+            string result = response.Content.ReadAsStringAsync().Result;
+
+            //Parse the result into generic objects
+            dynamic items = (JArray)JsonConvert.DeserializeObject(result);
+
+            //Parse the items into a list of movie
+            List<Movie> movies = items.ToObject<List<Movie>>();
+
+            ViewBag.Source = "Get";
+            return View("Index", movies);
+        }
+
+        public ActionResult GetOne(int id)
+        {
+            HttpClient client = InitializeClient();
+
+
+            //Do the actual call to the WebAPI
+            HttpResponseMessage response = client.GetAsync("Movie/" + id).Result;
+
+            //Parse the result
+            string result = response.Content.ReadAsStringAsync().Result;
+
+            //Parse the result into generic objects
+            Movie movie = JsonConvert.DeserializeObject<Movie>(result);
+
+            return View("Details", movie);
+        }
+
+        public ActionResult Insert()
+        {
+            HttpClient client = InitializeClient();
+
+            MovieGenresDirectorsRaitingsFormats pdts = GetDegreeTypes(client);
+
+            pdts.Movie = new Movie();
+
+            return View("Create", pdts);
+        }
+        [HttpPost]
+        public ActionResult Insert(MovieGenresDirectorsRaitingsFormats pdts)
+        {
+            try
+            {
+                HttpClient client = InitializeClient();
+                HttpResponseMessage response = client.PostAsJsonAsync("Movie", pdts.Movie).Result;
+                return RedirectToAction("Get");
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Error = ex.Message;
+                return View("Create", pdts);
+            }
+
+
+        }
+        public ActionResult Update(int id)
+        {
+            HttpClient client = InitializeClient();
+
+            MovieGenresDirectorsRaitingsFormats pdts = GetDegreeTypes(client);
+
+            HttpResponseMessage response = client.GetAsync("Movie/" + id).Result;
+            string result = response.Content.ReadAsStringAsync().Result;
+            Movie movie = JsonConvert.DeserializeObject<Movie>(result);
+
+            return View("Edit", pdts);
+
+        }
+
+        private static MovieGenresDirectorsRaitingsFormats GetDegreeTypes(HttpClient client)
+        {
+            MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+            pdts.Genres = new List<Genre>();
+            HttpResponseMessage response = client.GetAsync("Genres").Result;
+            string result = response.Content.ReadAsStringAsync().Result;
+            dynamic items = (JArray)JsonConvert.DeserializeObject(result);
+            pdts.Genres = items.ToObject<List<Genre>>();
+            return pdts;
+        }
+
+        [HttpPost]
+        public ActionResult Update(MovieGenresDirectorsRaitingsFormats pdts, int id)
+        {
+            try
+            {
+                HttpClient client = InitializeClient();
+                HttpResponseMessage response = client.PutAsJsonAsync("Movie/" + id, pdts.Movie).Result;
+                return RedirectToAction("Get");
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Error = ex.Message;
+                return View("Edit", pdts);
+            }
+
+        }
+
+        public ActionResult Remove(int id)
+        {
+            HttpClient client = InitializeClient();
+            HttpResponseMessage response = client.GetAsync("Movie/" + id).Result;
+            string result = response.Content.ReadAsStringAsync().Result;
+            Movie movie = JsonConvert.DeserializeObject<Movie>(result);
+            return View("Delete", movie);
+        }
+
+        [HttpPost]
+        public ActionResult Remove(int id, Movie movie)
+        {
+            try
+            {
+                HttpClient client = InitializeClient();
+                HttpResponseMessage response = client.DeleteAsync("Movie/" + id).Result;
+                return RedirectToAction("Get");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.Error = ex.Message;
+                return View("Delete", movie);
+            }
+        }
+        #endregion
     }
 }
