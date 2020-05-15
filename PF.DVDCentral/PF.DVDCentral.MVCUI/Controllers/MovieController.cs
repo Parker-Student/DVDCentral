@@ -20,9 +20,12 @@ namespace PF.DVDCentral.MVCUI.Controllers
         List<Movie> movies;
 
         // GET: Movie
+
         public ActionResult Index()
         {
-            if(Authenticate.IsAuthenticated())
+
+
+            if (Authenticate.IsAuthenticated())
             {
                 movies = MovieManager.Load();
                 ViewBag.Source = "Index";
@@ -32,59 +35,66 @@ namespace PF.DVDCentral.MVCUI.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User", new { returnurl = HttpContext.Request.Url });
+                return RedirectToAction("Login", "User");
 
             }
         }
-        [ChildActionOnly]
-        public ActionResult Sidebar()
-        {
-            var movies = MovieManager.Load();
-            return PartialView(movies);
-        }
+        
         // GET: Movie/Details/5
         public ActionResult Details(int id)
         {
-            Movie Movie = MovieManager.LoadById(id);
-            return View(Movie);
+            Movie movie = MovieManager.LoadById(id);
+            return View(movie);
         }
 
         // GET: Movie/Create
         public ActionResult Create()
         {
-            if (Authenticate.IsAuthenticated())
-            {
+            Movie movie = new Movie();
 
-                MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+            //MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
 
-                pdts.Genres = GenreManager.Load();
-                pdts.Directors = DirectorManager.Load();
-                pdts.Ratings = RatingManager.Load();
-                pdts.Formats = FormatManager.Load();
-                pdts.Movie = new Movie();
+            //pdts.Movie = new Movie();
+            //pdts.Genres = GenreManager.Load();
+            //pdts.Directors = DirectorManager.Load();
+            //pdts.Ratings = RatingManager.Load();
+            //pdts.Formats = FormatManager.Load();
+           
 
-                return View(pdts);
-            }
-            else
-            {
-                return RedirectToAction("Login", "User", new { returnurl = HttpContext.Request.Url });
+            return View(movie);
+            //if (Authenticate.IsAuthenticated())
+            //{
 
-            }
+            //    MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+
+            //    pdts.Genres = GenreManager.Load();
+            //    pdts.Directors = DirectorManager.Load();
+            //    pdts.Ratings = RatingManager.Load();
+            //    pdts.Formats = FormatManager.Load();
+            //    pdts.Movie = new Movie();
+
+            //    return View(pdts);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "User");
+
+            //}
         }
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(MovieGenresDirectorsRaitingsFormats pdts)
+        public ActionResult Create(Movie movie)
         {
             try
             {
-                if (pdts.File != null)
+                if (movie.File != null)
                 {
-                    pdts.Movie.ImagePath = pdts.File.FileName;
-                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(pdts.File.FileName));
+                    movie.ImagePath = movie.File.FileName;
+                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(movie.File.FileName));
                     if (!System.IO.File.Exists(target))
                     {
-                        pdts.File.SaveAs(target);
+                        movie.File.SaveAs(target);
                         ViewBag.Message = "File Uploaded Successfully...";
                     }
                     else
@@ -94,19 +104,21 @@ namespace PF.DVDCentral.MVCUI.Controllers
                 }
 
                 // TODO: Add insert logic here
-                MovieManager.Insert(pdts.Movie);
+                MovieManager.Insert(movie);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
-                return View(pdts);
+                return View(movie);
             }
         }
 
         // GET: Movie/Edit/5
         public ActionResult Edit(int id)
         {
+
+
             if (Authenticate.IsAuthenticated())
             {
                 MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();

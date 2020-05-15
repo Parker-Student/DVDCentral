@@ -16,7 +16,7 @@ namespace PF.DVDCentral.BL.Models
         [DisplayName("First Name")]
 
         public string FirstName { get; set; }
-        [DisplayName("LastName")]
+        [DisplayName("Last Name")]
 
         public string LastName { get; set; }
         [DisplayName("Password")]

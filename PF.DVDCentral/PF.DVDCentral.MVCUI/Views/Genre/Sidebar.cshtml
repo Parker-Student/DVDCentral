@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PF.DVDCentral.BL.Models.Genre>
+
+
+<table>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Description, "Details", "Genre", new { id = item.Id }, null)
+            </td>
+
+        </tr>
+    }
+    <tr>
+        <td>
+            @Html.ActionLink("Show All", "Index", "Genre")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("New Declaration", "Create", "Genre")
+        </td>
+    </tr>
+
+
+</table>

@@ -171,6 +171,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\5342f07.jpg" />
+    <Content Include="images\6f8b45f.jpg" />
+    <Content Include="images\7b8aec4.jpg" />
+    <Content Include="images\d03lvyhb5zc41.png" />
+    <Content Include="images\d809973.png" />
+    <Content Include="images\e91940c.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -292,7 +298,6 @@
     <Content Include="Views\Director\Details.cshtml" />
     <Content Include="Views\Director\Create.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\Movie\Sidebar.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
@@ -313,7 +318,6 @@
     <Content Include="Views\Genre\Create.cshtml" />
     <Content Include="Views\Genre\Edit.cshtml" />
     <Content Include="Views\Genre\Delete.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -327,6 +331,9 @@
     <Content Include="Views\ShoppingCart\CartDisplay.cshtml" />
     <Content Include="Views\Director\Edit.cshtml" />
     <Content Include="Views\Director\Delete.cshtml" />
+    <Content Include="Views\Genre\Sidebar.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Movie\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,12 +12,12 @@ namespace PF.DVDCentral.MVCUI.Controllers
     {
         public ActionResult Login(string returnurl)
         {
-            ViewBag.ReturnUrl = returnurl;
+         
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(User user, string returnurl)
+        public ActionResult Login(User user)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace PF.DVDCentral.MVCUI.Controllers
                 {
                     //Login worked. Save user to session.
                     Session["user"] = user;
-                    return RedirectToAction("Index", "ProgDec");
+                    return RedirectToAction("Index", "Movie");
                    // return Redirect(returnurl);
                 }
                 ViewBag.Message = "Sorry no soup for you.";

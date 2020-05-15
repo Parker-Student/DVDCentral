@@ -25,6 +25,14 @@ namespace BDF.ProgramDec.MVCUI.Controllers
             genres = GenreManager.Load();
             return View(genres);
         }
+        [ChildActionOnly]
+        public ActionResult Sidebar()
+        {
+            var genres = GenreManager.Load();
+            return PartialView(genres);
+        }
+
+        
 
         // GET: Genre/Details/5
         public ActionResult Details(int id)

@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PF.DVDCentral.BL;
+using System.Web;
+
 
 namespace PF.DVDCentral.BL.Models
 {
@@ -15,6 +18,7 @@ namespace PF.DVDCentral.BL.Models
 
         [DisplayName("Image")]
         public string ImagePath { get; set; }
+        public HttpPostedFileBase File { get; set; }
 
         public decimal Cost { get; set; }
         public int InStockQty { get; set; }
