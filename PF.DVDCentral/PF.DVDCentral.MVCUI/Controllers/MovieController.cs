@@ -39,8 +39,8 @@ namespace PF.DVDCentral.MVCUI.Controllers
         [ChildActionOnly]
         public ActionResult Sidebar()
         {
-            var programs = MovieManager.Load();
-            return PartialView(programs);
+            var movies = MovieManager.Load();
+            return PartialView(movies);
         }
         // GET: Movie/Details/5
         public ActionResult Details(int id)
