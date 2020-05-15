@@ -10,7 +10,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
-
+using PF.DVDCentral.MVCUI.ViewModels;
 
 namespace PF.DVDCentral.MVCUI.Controllers
 {
@@ -52,44 +52,108 @@ namespace PF.DVDCentral.MVCUI.Controllers
         // GET: Movie/Create
         public ActionResult Create()
         {
-            return View();
+            if (Authenticate.IsAuthenticated())
+            {
+
+                MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+
+                pdts.Genres = GenreManager.Load();
+                pdts.Directors = DirectorManager.Load();
+                pdts.Ratings = RatingManager.Load();
+                pdts.Formats = FormatManager.Load();
+                pdts.Movie = new Movie();
+
+                return View(pdts);
+            }
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnurl = HttpContext.Request.Url });
+
+            }
         }
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(MovieGenresDirectorsRaitingsFormats pdts)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (pdts.File != null)
+                {
+                    pdts.Movie.ImagePath = pdts.File.FileName;
+                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(pdts.File.FileName));
+                    if (!System.IO.File.Exists(target))
+                    {
+                        pdts.File.SaveAs(target);
+                        ViewBag.Message = "File Uploaded Successfully...";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "File Already Exists...";
+                    }
+                }
 
+                // TODO: Add insert logic here
+                MovieManager.Insert(pdts.Movie);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                return View(pdts);
             }
         }
 
         // GET: Movie/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (Authenticate.IsAuthenticated())
+            {
+                MovieGenresDirectorsRaitingsFormats pdts = new MovieGenresDirectorsRaitingsFormats();
+                pdts.Movie = MovieManager.LoadById(id);
+                pdts.Genres = GenreManager.Load();
+                pdts.Directors = DirectorManager.Load();
+                pdts.Ratings = RatingManager.Load();
+                pdts.Formats = FormatManager.Load();
+
+                return View(pdts);
+            }
+
+            else
+            {
+                return RedirectToAction("Login", "User", new { returnurl = HttpContext.Request.Url });
+
+            }
         }
 
         // POST: Movie/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, MovieGenresDirectorsRaitingsFormats pdts)
         {
             try
             {
+                if (pdts.File != null)
+                {
+                    pdts.Movie.ImagePath = pdts.File.FileName;
+                    string target = Path.Combine(Server.MapPath("~/images"), Path.GetFileName(pdts.File.FileName));
+                    if (!System.IO.File.Exists(target))
+                    {
+                        pdts.File.SaveAs(target);
+                        ViewBag.Message = "File Uploaded Successfully...";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "File Already Exists...";
+                    }
+                }
                 // TODO: Add update logic here
-
+                MovieManager.Update(pdts.Movie);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Message = ex.Message;
+                return View(pdts);
             }
         }
 
